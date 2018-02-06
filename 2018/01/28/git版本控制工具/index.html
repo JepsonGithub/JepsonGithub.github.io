@@ -87,13 +87,10 @@
 <meta property="og:site_name" content="Jepson_鹏鹏的专栏">
 <meta property="og:description" content="git版本控制工具标签： git  为什么要有版本控制系统? 在开发过程中，经常需要对一个文件进行修改甚至删除，但是我们又希望能够保存这个文件的历史记录，如果通过备份，那么管理起来会非常的复杂。 在多人开发时，如果需要多人合作开发一个页面，那么修改以及合并也会非常的棘手。容易出现冲突。  什么是版本控制系统？版本控制系统（Version Control System）:是一种记录一个或若干文件内容">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/01/28/git版本控制工具/images/gitinstall.png">
-<meta property="og:image" content="http://yoursite.com/2018/01/28/git版本控制工具/images/fenzhi.png">
-<meta property="og:updated_time" content="2018-01-28T08:57:11.000Z">
+<meta property="og:updated_time" content="2018-02-06T02:30:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git版本控制工具">
 <meta name="twitter:description" content="git版本控制工具标签： git  为什么要有版本控制系统? 在开发过程中，经常需要对一个文件进行修改甚至删除，但是我们又希望能够保存这个文件的历史记录，如果通过备份，那么管理起来会非常的复杂。 在多人开发时，如果需要多人合作开发一个页面，那么修改以及合并也会非常的棘手。容易出现冲突。  什么是版本控制系统？版本控制系统（Version Control System）:是一种记录一个或若干文件内容">
-<meta name="twitter:image" content="http://yoursite.com/2018/01/28/git版本控制工具/images/gitinstall.png">
 
 
 
@@ -380,8 +377,7 @@
 <h2 id="git安装"><a href="#git安装" class="headerlink" title="git安装"></a>git安装</h2><p><a href="https://git-scm.com/download/win" target="_blank" rel="noopener">下载地址</a></p>
 <p><code>1. 不要安装在中文目录</code></p>
 <p><code>2. 不要使用桌面管理软件</code></p>
-<p>安装很简单，一直下一步即可。在任意的目录下右键，能够出现下图，表示安装成功了。</p>
-<p><img src="images/gitinstall.png" alt=""></p>
+<p>安装很简单，一直下一步即可。在任意的目录下右键，能看到菜单, 就表示安装成功了。</p>
 <p>git是用法方式主要有两种，</p>
 <ul>
 <li>git gui，即图形化界面的方式</li>
@@ -476,7 +472,6 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 忽视idea.txt文件</span></span><br><span class="line">idea.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 忽视.gitignore文件</span></span><br><span class="line">.gitignore</span><br><span class="line"></span><br><span class="line"><span class="comment"># 忽视css下的index.js文件</span></span><br><span class="line">css/index.js</span><br><span class="line"></span><br><span class="line"><span class="comment"># 忽视css下的所有的js文件</span></span><br><span class="line">css/*.js</span><br><span class="line"></span><br><span class="line"><span class="comment"># 忽视css下的所有文件</span></span><br><span class="line">css/*.*</span><br><span class="line"><span class="comment"># 忽视css文件夹</span></span><br><span class="line">css</span><br></pre></td></tr></table></figure>
 <h1 id="git分支操作"><a href="#git分支操作" class="headerlink" title="git分支操作"></a>git分支操作</h1><p>分支就是科幻电影里面的平行宇宙，当你正在电脑前努力学习Git的时候，另一个你正在另一个平行宇宙里努力学习SVN。</p>
 <p>如果两个平行宇宙互不干扰，那对现在的你也没啥影响。不过，在某个时间点，两个平行宇宙合并了，结果，你既学会了Git又学会了SVN！</p>
-<p><img src="images/fenzhi.png" alt=""></p>
 <h2 id="为什么要有分支？"><a href="#为什么要有分支？" class="headerlink" title="为什么要有分支？"></a><strong>为什么要有分支？</strong></h2><ul>
 <li>如果你要开发一个新的功能，需要2周时间，第一周你只能写50%代码，如果此时立即提交，代码没写完，不完整的代码会影响到别人无法工作。如果等代码写完再提交，代码很容易丢失，风险很大。</li>
 <li>有了分支，你就可以创建一个属于自己的分支，别人看不到，也不影响别人，你在自己的分支上工作，提交到自己的分支上，等到功能开发完毕，一次性的合并到原来的分支。这样既安全，又不影响他人工作。</li>
@@ -744,7 +739,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -755,7 +750,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -766,7 +761,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

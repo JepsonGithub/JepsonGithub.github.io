@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="vue," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Vue入坑笔记标签： vue [TOC]  什么是Vue.js Vue.js 是前端的主流框架之一，和Angular.js、React.js 一起，并称为前端三大主流框架！ Vue.js 是一套构建用户界面的框架，只关注视图层，它不仅易于上手，还便于与第三方库或既有项目整合。（Vue有配套的第三方类库，可以整合起来做大型项目的开发） 前端的主要工作？主要负责MVC中的V这一层；主要工作就是和界面打">
+<meta name="keywords" content="vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue入坑笔记">
+<meta property="og:url" content="http://yoursite.com/2018/02/06/vue入坑笔记/index.html">
+<meta property="og:site_name" content="Jepson_鹏鹏的专栏">
+<meta property="og:description" content="Vue入坑笔记标签： vue [TOC]  什么是Vue.js Vue.js 是前端的主流框架之一，和Angular.js、React.js 一起，并称为前端三大主流框架！ Vue.js 是一套构建用户界面的框架，只关注视图层，它不仅易于上手，还便于与第三方库或既有项目整合。（Vue有配套的第三方类库，可以整合起来做大型项目的开发） 前端的主要工作？主要负责MVC中的V这一层；主要工作就是和界面打">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://static.zybuluo.com/JepsonCC/fk6tqxxmy17hpxkrmlvcxsl0/image_1c5ih14ve1gvj9t5n6f11epe9k9.png">
+<meta property="og:updated_time" content="2018-02-06T02:32:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue入坑笔记">
+<meta name="twitter:description" content="Vue入坑笔记标签： vue [TOC]  什么是Vue.js Vue.js 是前端的主流框架之一，和Angular.js、React.js 一起，并称为前端三大主流框架！ Vue.js 是一套构建用户界面的框架，只关注视图层，它不仅易于上手，还便于与第三方库或既有项目整合。（Vue有配套的第三方类库，可以整合起来做大型项目的开发） 前端的主要工作？主要负责MVC中的V这一层；主要工作就是和界面打">
+<meta name="twitter:image" content="http://static.zybuluo.com/JepsonCC/fk6tqxxmy17hpxkrmlvcxsl0/image_1c5ih14ve1gvj9t5n6f11epe9k9.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/02/06/vue入坑笔记/"/>
+
+
+
+
+
+  <title>vue入坑笔记 | Jepson_鹏鹏的专栏</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jepson_鹏鹏的专栏</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Just do it!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/06/vue入坑笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jepson">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://static.zybuluo.com/JepsonCC/focrrncqb7uriops1uguvcfd/image_1c4uu558p1vhh71a1mvqbsp11i2m.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jepson_鹏鹏的专栏">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">vue入坑笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-06T10:31:00+08:00">
+                2018-02-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/vue/" itemprop="url" rel="index">
+                    <span itemprop="name">vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Vue入坑笔记"><a href="#Vue入坑笔记" class="headerlink" title="Vue入坑笔记"></a>Vue入坑笔记</h1><p>标签： vue</p>
+<p>[TOC]</p>
+<hr>
+<h2 id="什么是Vue-js"><a href="#什么是Vue-js" class="headerlink" title="什么是Vue.js"></a>什么是Vue.js</h2><ul>
+<li>Vue.js 是前端的<strong>主流框架之一</strong>，和Angular.js、React.js 一起，并称为前端三大主流框架！</li>
+<li>Vue.js 是一套构建用户界面的框架，<strong>只关注视图层</strong>，它不仅易于上手，还便于与第三方库或既有项目整合。（Vue有配套的第三方类库，可以整合起来做大型项目的开发）</li>
+<li>前端的主要工作？主要负责MVC中的V这一层；主要工作就是和界面打交道；</li>
+</ul>
+<h2 id="Vue-js-初体验"><a href="#Vue-js-初体验" class="headerlink" title="Vue.js 初体验"></a>Vue.js 初体验</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 指定内容由 app 进行管理, 注意: id=app 不能加给body --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-model</span>=<span class="string">"msg"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123; msg &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123; msg &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./node_modules/vue/dist/vue.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  // vuejs 的强项就在于数据绑定</span></span><br><span class="line"><span class="undefined">  /* </span></span><br><span class="line"><span class="undefined">    1. 双向数据绑定  (一般用于表单元素)</span></span><br><span class="line"><span class="undefined">       当数据和元素进行双向数据绑定之后, 数据发生变化, 元素中的内容也会发生变化, 元素中的内容发生变化, 数据也会发生变化</span></span><br><span class="line"><span class="undefined">    </span></span><br><span class="line"><span class="undefined">    2. 单向数据绑定  (一般用于展示型元素)</span></span><br><span class="line"><span class="undefined">       当数据和元素进行单向数据绑定之后, 数据发生变化, 元素中的内容也会发生变化, 元素的内容发生变化, 不会影响到数据</span></span><br><span class="line"><span class="undefined">  */</span></span><br><span class="line"><span class="undefined">  </span></span><br><span class="line"><span class="undefined">  // 创建 Vue 实例</span></span><br><span class="line"><span class="undefined">  var app = new Vue(&#123;</span></span><br><span class="line"><span class="undefined">    // el 固定属性, 用来指定 vm 对象管理的元素</span></span><br><span class="line"><span class="undefined">    el: "#app",</span></span><br><span class="line"><span class="undefined">    // data 固定属性, 用来给 vm 对象管理的元素提供数据</span></span><br><span class="line"><span class="undefined">    data: &#123;</span></span><br><span class="line"><span class="undefined">      msg: "我是数据"</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;)</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Vue-双向数据绑定基本原理"><a href="#Vue-双向数据绑定基本原理" class="headerlink" title="Vue 双向数据绑定基本原理"></a>Vue 双向数据绑定基本原理</h2><h3 id="前置知识点-defineProperty"><a href="#前置知识点-defineProperty" class="headerlink" title="前置知识点: defineProperty"></a>前置知识点: defineProperty</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">var</span> obj = &#123; </span><br><span class="line">    name: <span class="string">"鹏鹏"</span></span><br><span class="line">  &#125;  </span><br><span class="line">  <span class="comment">// obj.yanzhi = 999999;</span></span><br><span class="line">  <span class="comment">// obj.yanzhi = "丑的要死";</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// Object.defineProperty</span></span><br><span class="line">  <span class="comment">// 功能: 可以用来给对象添加新属性, 也可以修改对象已经存在的属性</span></span><br><span class="line">  <span class="comment">// 特点: 这种方式添加的属性可以设置属性的特征</span></span><br><span class="line">  <span class="comment">// 属性的特征:</span></span><br><span class="line">  <span class="comment">// 1. 属性可不可写</span></span><br><span class="line">  <span class="comment">// 2. 属性可不可遍历(枚举)</span></span><br><span class="line">  <span class="comment">// 3. 属性可不可删除</span></span><br><span class="line">  <span class="comment">// 4. 属性的默认值</span></span><br><span class="line">  <span class="comment">// 5. 属性的设置和获取方法( 重点 )</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 语法: </span></span><br><span class="line">  <span class="comment">// Object.defineProperty(要添加属性的对象, 要添加的属性名, 属性的特征对象)</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">Object</span>.defineProperty( obj, <span class="string">"yanzhi"</span>, &#123;</span><br><span class="line">    <span class="comment">// writeable 属性: 可设置当前属性是否可以被赋值, 默认是 false</span></span><br><span class="line">    writable: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">// enumerable 属性: 可设置当前属性是否可以被遍历, 默认是 false, 不可枚举</span></span><br><span class="line">    enumerable: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">// configurable 属性: 设置当前属性描述符是否可改, 当前属性是否可删除, 默认是false</span></span><br><span class="line">    configurable: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">// value 属性: 配置属性的默认值</span></span><br><span class="line">    value: <span class="number">99999999</span></span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log( obj );</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> ( <span class="keyword">var</span> k <span class="keyword">in</span> obj ) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log( k );</span><br><span class="line">  &#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="get-和-set-重点"><a href="#get-和-set-重点" class="headerlink" title="get 和 set(重点)"></a>get 和 set(重点)</h3><blockquote>
+<p>注意: value 和 writable 属性 和 get, set 不能共存, 共存会报错</p>
+</blockquote>
+<p><img src="http://static.zybuluo.com/JepsonCC/fk6tqxxmy17hpxkrmlvcxsl0/image_1c5ih14ve1gvj9t5n6f11epe9k9.png" alt="image_1c5ih14ve1gvj9t5n6f11epe9k9.png-45.4kB"></p>
+<ul>
+<li>get 函数, 属性在被获取值时, 自动调用, 获取的值时 get 函数的返回值</li>
+<li>set 函数在 属性被赋值时, 自动调用</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123; </span><br><span class="line">  name: <span class="string">"鹏鹏"</span></span><br><span class="line">&#125;  </span><br><span class="line"><span class="built_in">Object</span>.defineProperty( obj, <span class="string">"yanzhi"</span>, &#123;</span><br><span class="line">  enumerable: <span class="literal">true</span>,</span><br><span class="line">  configurable: <span class="literal">true</span>,</span><br><span class="line">  get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// get 函数, 属性在被获取值时, 自动调用, 获取的值时 get 函数的返回值</span></span><br><span class="line">    <span class="built_in">console</span>.log( <span class="string">"get函数被调用了"</span> );</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 递归死循环: return this.yanzhi;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>._yanzhi;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  set: <span class="function"><span class="keyword">function</span>(<span class="params"> value </span>) </span>&#123;</span><br><span class="line">    <span class="comment">// set 函数在 属性被赋值时, 自动调用</span></span><br><span class="line">    <span class="built_in">console</span>.log( <span class="string">"set函数被调用了"</span> );</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 递归死循环: this.yanzhi = value;</span></span><br><span class="line">    <span class="keyword">this</span>._yanzhi = value;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">obj.yanzhi = <span class="number">999</span>;</span><br><span class="line"><span class="built_in">console</span>.log(obj.yanzhi);</span><br></pre></td></tr></table></figure>
+<p>可以在set方法中监听属性的变化<br>也可以在set方法中, 为属性的赋值设置合法性校验<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 赋值操作时会调用 set 方法, 可以在set方法中监听属性的变化</span></span><br><span class="line">set: <span class="function"><span class="keyword">function</span>(<span class="params"> value </span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log( <span class="string">"属性改变了"</span> )</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 也可以在set方法中, 为属性的赋值设置合法性校验</span></span><br><span class="line">  <span class="keyword">if</span> ( value &lt; <span class="number">99999999999</span> ) &#123;</span><br><span class="line">    <span class="keyword">this</span>._yanzhi = <span class="number">99999999999</span></span><br><span class="line">    <span class="keyword">throw</span> <span class="string">"总有刁明想害朕"</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>._yanzhi = value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="双向数据绑定"><a href="#双向数据绑定" class="headerlink" title="双向数据绑定"></a>双向数据绑定</h3><p>利用 es5 提供的双向数据绑定原理, 可以实现数据的双向数据绑定<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"txt"</span> <span class="attr">value</span>=<span class="string">"鹏鹏"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> obj = &#123;</span></span><br><span class="line"><span class="javascript">    name: <span class="string">"鹏鹏"</span></span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">  <span class="comment">// 1. 当元素放生变化的时候, 影响数据</span></span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> txt = <span class="built_in">document</span>.getElementById(<span class="string">"txt"</span>)</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">  <span class="comment">// 注册 input 事件</span></span></span><br><span class="line"><span class="javascript">  txt.addEventListener(<span class="string">"input"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 改变input值时, 同步更新到对象中</span></span></span><br><span class="line"><span class="undefined">    obj.name = txt.value</span></span><br><span class="line"><span class="undefined">  &#125;)</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">  <span class="comment">// 2 当数据发生变化时, 页面上也要变化</span></span></span><br><span class="line"><span class="javascript">  <span class="built_in">Object</span>.defineProperty(obj, <span class="string">"name"</span>, &#123;</span></span><br><span class="line"><span class="undefined">    get() &#123;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    &#125;,</span></span><br><span class="line"><span class="undefined">    set( value ) &#123;</span></span><br><span class="line"><span class="javascript">      <span class="comment">// 只要这个函数被调用了, 就证明属性被修改了</span></span></span><br><span class="line"><span class="javascript">      <span class="comment">// 就可以在这里给绑定的元素赋值了</span></span></span><br><span class="line"><span class="javascript">      <span class="keyword">this</span>._name = value;</span></span><br><span class="line"><span class="javascript">      <span class="comment">// 改变对象的值时, 同步更新到页面中</span></span></span><br><span class="line"><span class="undefined">      txt.value = value;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;)</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="v-bind-使用-vue-给属性绑定数据"><a href="#v-bind-使用-vue-给属性绑定数据" class="headerlink" title="v-bind 使用 vue 给属性绑定数据"></a>v-bind 使用 vue 给属性绑定数据</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">  &#123;&#123; msg &#125;&#125;</span><br><span class="line">  <span class="comment">&lt;!-- 当需要给html标签中的属性绑定一个数据的时候, 不能使用插值表达式</span></span><br><span class="line"><span class="comment">       需要使用 v-bind 指令</span></span><br><span class="line"><span class="comment">       语法: v-bind:属性名="数据名称"</span></span><br><span class="line"><span class="comment">       简写: :属性名="数据名称"</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">       如果视图中用到的属性, 在数据模型中没有定义, 就会报错</span></span><br><span class="line"><span class="comment">  --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">:title</span>=<span class="string">"msg"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./node_modules/vue/dist/vue.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  </span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">    el: <span class="string">"#app"</span>,</span></span><br><span class="line"><span class="undefined">    data: &#123;</span></span><br><span class="line"><span class="javascript">      msg: <span class="string">"hello vue"</span></span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;)</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="v-if-和-v-show"><a href="#v-if-和-v-show" class="headerlink" title="v-if 和 v-show"></a>v-if 和 v-show</h2><p>区别在于: </p>
+<ol>
+<li>v-if: 如果值为 false, 内部元素直接不渲染, 切换flag时, 会重复删除节点, 解析渲染节点</li>
+<li>v-show: 如果值为 false, 只是让节点的 display 为 none, 切换时, 切换的 display</li>
+</ol>
+<p><strong>应用:</strong><br>所以在一些需要频繁切换显示状态的, 比如说 tab 栏切换, 弹出层等等, 用 v-show 比较合适, 频繁切换也不会太耗性能</p>
+<p>而形如页面模板渲染, 不需要频繁切换的, 有就有没有就没有的, 就用 v-if 比较合适, 有些内容, 如果不想渲染, 还出现在页面节点中就不太好, 直接不渲染就好了</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- v-if 是用来做条件判断的, 如果值为false, 则元素会直接被从 html 中删除了 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-if</span>=<span class="string">"flag"</span>&gt;</span>&#123;&#123; msg &#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- v-show 也可以用来做条件判断, 如果值为false, 则元素隐藏 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-show</span>=<span class="string">"flag"</span>&gt;</span> &#123;&#123; msg &#125;&#125; <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./node_modules/vue/dist/vue.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  </span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">    el: <span class="string">"#app"</span>,</span></span><br><span class="line"><span class="undefined">    data: &#123;</span></span><br><span class="line"><span class="javascript">      flag: <span class="literal">false</span>,</span></span><br><span class="line"><span class="javascript">      msg: <span class="string">"你看不见我看不见我"</span></span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;)</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="案例-vue-简单跑马灯"><a href="#案例-vue-简单跑马灯" class="headerlink" title="案例: vue 简单跑马灯"></a>案例: vue 简单跑马灯</h2><p>只需要考虑处理数据, 只要数据变了, 页面中的内容就变了</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-model</span>=<span class="string">"msg"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"start"</span>&gt;</span>start<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"stop"</span>&gt;</span>stop<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123; msg &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./node_modules/vue/dist/vue.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">    el: <span class="string">"#app"</span>,</span></span><br><span class="line"><span class="javascript">    <span class="comment">// data 里面是放数据的</span></span></span><br><span class="line"><span class="undefined">    data: &#123;</span></span><br><span class="line"><span class="javascript">      msg: <span class="string">"你好, 世界这么大, 你应该出去看看"</span>,</span></span><br><span class="line"><span class="javascript">      timer: <span class="literal">null</span></span></span><br><span class="line"><span class="undefined">    &#125;,</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    methods: &#123;</span></span><br><span class="line"><span class="undefined">      start() &#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">this</span>.timer = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">          <span class="comment">// slice(start, end)  从start截到end, 包含start 不包含end</span></span></span><br><span class="line"><span class="javascript">          <span class="comment">// slice(start) 从start 截到尾</span></span></span><br><span class="line"><span class="javascript">          <span class="comment">// slice() 不传值截取一整个字符串</span></span></span><br><span class="line"><span class="javascript">          <span class="keyword">this</span>.msg = <span class="keyword">this</span>.msg.slice(<span class="number">1</span>) + <span class="keyword">this</span>.msg.slice(<span class="number">0</span>,<span class="number">1</span>)</span></span><br><span class="line"><span class="undefined">        &#125;, 200)</span></span><br><span class="line"><span class="undefined">      &#125;,</span></span><br><span class="line"><span class="undefined">      stop() &#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">this</span>.timer &amp;&amp; clearInterval( <span class="keyword">this</span>.timer )</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;)</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="v-on-指令的使用"><a href="#v-on-指令的使用" class="headerlink" title="v-on 指令的使用"></a>v-on 指令的使用</h2><p>注册事件的时候, 可以直接写函数名称, 也可以加上() 当成表达式调用, 但是区别在于, 写成函数调用的那种是可以传参的, 这是比较方便的</p>
+<p>另外: v-on:事件 可以简写为 @事件=”事件处理函数()”<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">&lt;!-- v-on 指令语法</span></span><br><span class="line"><span class="comment">       v-on:事件类型="事件处理函数"</span></span><br><span class="line"><span class="comment">       v-on:事件类型="表达式"</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">       简写: </span></span><br><span class="line"><span class="comment">       @事件类型="事件处理函数"</span></span><br><span class="line"><span class="comment">       @事件类型="表达式"</span></span><br><span class="line"><span class="comment">  --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 当成表达式, 解析执行表达式 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"num = 1 + 1"</span>&gt;</span>加成2<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 当成方法, 来调用 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"clickHandler"</span>&gt;</span>clickHandler<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 当成表达式, 解析执行 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"clickHandler()"</span>&gt;</span>clickHandler()<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- v-on 可以 简写成 @事件 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"clickHandler()"</span>&gt;</span>@<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./node_modules/vue/dist/vue.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  </span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">    el: <span class="string">"#app"</span>,</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 定义数据模型</span></span></span><br><span class="line"><span class="undefined">    data: &#123;</span></span><br><span class="line"><span class="undefined">      num: 0</span></span><br><span class="line"><span class="undefined">    &#125;,</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 定义方法</span></span></span><br><span class="line"><span class="undefined">    methods: &#123;</span></span><br><span class="line"><span class="javascript">      <span class="comment">// 点击处理函数</span></span></span><br><span class="line"><span class="undefined">      clickHandler() &#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">this</span>.num += <span class="number">1</span>;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log( <span class="keyword">this</span>.num );</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;)</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="在-vue-事件中获取事件对象"><a href="#在-vue-事件中获取事件对象" class="headerlink" title="在 vue 事件中获取事件对象"></a>在 vue 事件中获取事件对象</h2><ol>
+<li>如果事件是通过 <code>@click=函数名</code> 函数名来注册的, 直接通过 e 就可以拿到事件对象</li>
+<li>但是如果是 <code>@click=函数名()</code> 表达式注册的, 由于是手动调用, 所有就没有默认的 event 参数, 如果需要事件对象必须手动传 <strong>$event</strong></li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"btnClick"</span>&gt;</span>按钮<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 相当于手动调用函数, 这样没有event --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"btnClick2()"</span>&gt;</span>按钮2<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 但是就是想获取事件对象怎么办呢? --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"btnClick2( $event )"</span>&gt;</span>按钮2 $event<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./node_modules/vue/dist/vue.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  </span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">    el: <span class="string">"#app"</span>,</span></span><br><span class="line"><span class="undefined">    data: &#123;</span></span><br><span class="line"><span class="javascript">      <span class="comment">// 如果事件是通过, 函数名称来直接注册的</span></span></span><br><span class="line"><span class="javascript">      <span class="comment">// 我们可以直接通过函数的 e 参数来作为事件对象来用</span></span></span><br><span class="line"><span class="undefined">      btnClick( e ) &#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log( e )</span></span><br><span class="line"><span class="undefined">      &#125;,</span></span><br><span class="line"><span class="undefined">      btnClick2( e ) &#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log( e )</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;)</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<hr>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://static.zybuluo.com/JepsonCC/qi8vjk62dk51zqt0a8an8xir/image_1c4uso3kemnn18jg11951ho31g2o9.png" alt="Jepson 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://static.zybuluo.com/JepsonCC/6l63d7x84xii3bwgkpcqk33n/image_1c4usp36f121s29j2r511fd18r5m.png" alt="Jepson 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vue/" rel="tag"># vue</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/02/微信小程序/" rel="next" title="微信小程序">
+                <i class="fa fa-chevron-left"></i> 微信小程序
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://static.zybuluo.com/JepsonCC/focrrncqb7uriops1uguvcfd/image_1c4uu558p1vhh71a1mvqbsp11i2m.png"
+                alt="Jepson" />
+            
+              <p class="site-author-name" itemprop="name">Jepson</p>
+              <p class="site-description motion-element" itemprop="description">爱学习, 爱前端</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/JepsonGithub" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vue入坑笔记"><span class="nav-number">1.</span> <span class="nav-text">Vue入坑笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是Vue-js"><span class="nav-number">1.1.</span> <span class="nav-text">什么是Vue.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue-js-初体验"><span class="nav-number">1.2.</span> <span class="nav-text">Vue.js 初体验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue-双向数据绑定基本原理"><span class="nav-number">1.3.</span> <span class="nav-text">Vue 双向数据绑定基本原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#前置知识点-defineProperty"><span class="nav-number">1.3.1.</span> <span class="nav-text">前置知识点: defineProperty</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#get-和-set-重点"><span class="nav-number">1.3.2.</span> <span class="nav-text">get 和 set(重点)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双向数据绑定"><span class="nav-number">1.3.3.</span> <span class="nav-text">双向数据绑定</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#v-bind-使用-vue-给属性绑定数据"><span class="nav-number">1.4.</span> <span class="nav-text">v-bind 使用 vue 给属性绑定数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#v-if-和-v-show"><span class="nav-number">1.5.</span> <span class="nav-text">v-if 和 v-show</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#案例-vue-简单跑马灯"><span class="nav-number">1.6.</span> <span class="nav-text">案例: vue 简单跑马灯</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#v-on-指令的使用"><span class="nav-number">1.7.</span> <span class="nav-text">v-on 指令的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在-vue-事件中获取事件对象"><span class="nav-number">1.8.</span> <span class="nav-text">在 vue 事件中获取事件对象</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jepson</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+<div><span><a href="http://www.miitbeian.gov.cn">苏ICP备18002051号-1</a></span></div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
