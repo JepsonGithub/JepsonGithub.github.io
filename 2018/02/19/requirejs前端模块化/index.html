@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="前端模块化," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="requirejs 模块化标签： 前端模块化  模块化的标准为什么要有标准?让模块拥有更好的通用性!  CommonJS: node.js 中实现模块所遵循的标准  12345module.exports.xxx = &quot;&quot;exports.xx = &quot;&quot;module.exports = &amp;#123;&amp;#125;require(&quot;&quot;)  AMD: Async Module Definition 异步模">
+<meta name="keywords" content="前端模块化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="requirejs前端模块化">
+<meta property="og:url" content="http://yoursite.com/2018/02/19/requirejs前端模块化/index.html">
+<meta property="og:site_name" content="Jepson_鹏鹏的专栏">
+<meta property="og:description" content="requirejs 模块化标签： 前端模块化  模块化的标准为什么要有标准?让模块拥有更好的通用性!  CommonJS: node.js 中实现模块所遵循的标准  12345module.exports.xxx = &quot;&quot;exports.xx = &quot;&quot;module.exports = &amp;#123;&amp;#125;require(&quot;&quot;)  AMD: Async Module Definition 异步模">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-19T12:48:27.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="requirejs前端模块化">
+<meta name="twitter:description" content="requirejs 模块化标签： 前端模块化  模块化的标准为什么要有标准?让模块拥有更好的通用性!  CommonJS: node.js 中实现模块所遵循的标准  12345module.exports.xxx = &quot;&quot;exports.xx = &quot;&quot;module.exports = &amp;#123;&amp;#125;require(&quot;&quot;)  AMD: Async Module Definition 异步模">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/02/19/requirejs前端模块化/"/>
+
+
+
+
+
+  <title>requirejs前端模块化 | Jepson_鹏鹏的专栏</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jepson_鹏鹏的专栏</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Just do it!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/19/requirejs前端模块化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jepson">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://static.zybuluo.com/JepsonCC/focrrncqb7uriops1uguvcfd/image_1c4uu558p1vhh71a1mvqbsp11i2m.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jepson_鹏鹏的专栏">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">requirejs前端模块化</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-19T20:31:00+08:00">
+                2018-02-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端模块化/" itemprop="url" rel="index">
+                    <span itemprop="name">前端模块化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="requirejs-模块化"><a href="#requirejs-模块化" class="headerlink" title="requirejs 模块化"></a>requirejs 模块化</h2><p>标签： 前端模块化</p>
+<hr>
+<h2 id="模块化的标准"><a href="#模块化的标准" class="headerlink" title="模块化的标准"></a>模块化的标准</h2><p>为什么要有标准?<br>让模块拥有更好的通用性!</p>
+<ol>
+<li><p>CommonJS: node.js 中实现模块所遵循的标准</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports.xxx = <span class="string">""</span></span><br><span class="line">exports.xx = <span class="string">""</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">require</span>(<span class="string">""</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>AMD: Async Module Definition 异步模块定义, 代表: require.js, 表示所有的模块化js, 是由一种异步的方式加载进来的<br>依赖前置: 在一开始就将所有的依赖全部加载</p>
+</li>
+<li><p>CMD: Common Module Definition 通用模块定义 sea.js<br>依赖延迟: 在需要的时候再去加载依赖项</p>
+</li>
+</ol>
+<h2 id="requirejs-模块定义和引用"><a href="#requirejs-模块定义和引用" class="headerlink" title="requirejs 模块定义和引用"></a>requirejs 模块定义和引用</h2><ul>
+<li><p>1 定义模块<br>在require.js 中, 模块也是分成一个个文件保存的, 而且每个模块都有自己单独的作用域<br>定义模块的时候, 需要使用 requirejs 提供的方法 -&gt; define方法<br>语法: define(“模块名称”, [“模块依赖项”], function() {})</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log( <span class="string">"这是模块 a 中的内容"</span> )</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2 引用模块<br>在 requirejs 中引用一个模块, 使用 require.js 提供的函数 require 进行引用<br>语法: require( [“模块文件的路径(不带.js后缀)”], function() { … } )<br>后面的函数是, 模块加载成功之后的回调函数</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>([<span class="string">"./modules/a"</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log( <span class="string">"a 模块加载完毕"</span> )</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="导出对象"><a href="#导出对象" class="headerlink" title="导出对象"></a>导出对象</h2><p>定义模块的时候, 有导出项的时候<br>如果有导出项, 只需要将导出项 return 即可</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log( <span class="string">"我是 b 模块里的内容"</span> )</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    bName: <span class="string">"bbbbbb"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>导入多个模块, 就是数组内写多个值, c, a, b 按顺序会接收模块的return 导出项, 如果没有导出, 那么就会是 undefined, 不会影响接收的顺序<br>所以一般我们会把没有返回值的模块放最后, 这样就不需要写全所有的形参来接收每个模块的值了, 因为 undefined 是没必要接收的<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>([<span class="string">"./modules/c"</span>, <span class="string">"./modules/a"</span>, <span class="string">"./modules/b"</span>, <span class="string">"./modules/d"</span>], <span class="function"><span class="keyword">function</span>(<span class="params">c, a, b</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 如果模块没有导出内容, 将会返回 undefined</span></span><br><span class="line">    <span class="comment">// d 模块没有返回值, 不需要接收, 放在最后</span></span><br><span class="line">    <span class="built_in">console</span>.log( <span class="built_in">arguments</span> );</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h2 id="模块的依赖项"><a href="#模块的依赖项" class="headerlink" title="模块的依赖项"></a>模块的依赖项</h2><p>在定义一个模块的时候, 这个模块可能会使用到其他模块的内容, 这些其他模块就可以称作是当前模块的依赖项</p>
+<ul>
+<li><p><code>need.js</code>: 定义一个有依赖项的js模块</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">define([<span class="string">"./a"</span>], <span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"我是有依赖项的模块, 我加载到了依赖项"</span>);</span><br><span class="line">  <span class="built_in">console</span>.log( a ) </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 need.js 模块, 会自动加载自己的依赖项</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>([<span class="string">"./modules/need"</span>])</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="模块路径查找问题"><a href="#模块路径查找问题" class="headerlink" title="模块路径查找问题"></a>模块路径查找问题</h2><p>在requirejs 中模块路径的查找方式, 一共分三种情况</p>
+<h3 id="1-当前文件路径为参照-相对路径"><a href="#1-当前文件路径为参照-相对路径" class="headerlink" title="1 当前文件路径为参照(相对路径)"></a>1 当前文件路径为参照(相对路径)</h3><ul>
+<li>最简单的, 不做任何配置, 直接以当前文件的路径为参照<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>([<span class="string">'./modules/a'</span>])</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2-配置data-main"><a href="#2-配置data-main" class="headerlink" title="2 配置data-main"></a>2 配置data-main</h3><ul>
+<li>如果给加载requirejs的script标签设置了 data-main 属性, 那么main.js内模块的查找, 会以main.js的路径为基础进行查找, 而不是html页面为基础s<br>data-main 指定的文件, 会在 requirejs加载完毕后, 通过异步的方式加载, 并执行里面的代码, 这个属性可以称为是入口文件, 刚一开始就要执行的代码都可以放到这个文件中<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"./require.js"</span> data-main=<span class="string">"./modules/main.js"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="3-配置-config-基础路径"><a href="#3-配置-config-基础路径" class="headerlink" title="3 配置 config 基础路径"></a>3 配置 config 基础路径</h3><ul>
+<li>如果通过 require.config 方法配置了基础路径, 那么所有的模块路径查找都会以这个路径基础为参照, 而且一般都被设置成绝对路径<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// config 方法是用来配置 require 的一些加载规则的</span></span><br><span class="line"><span class="built_in">require</span>.config(&#123;</span><br><span class="line">  <span class="comment">// baseUrl 指的就是查找模块时的基础路径, 所有的模块的查找都会以这个为参照</span></span><br><span class="line">  baseUrl: <span class="string">"/demo5/modules"</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>引用模块的时候, 模块路径 baseUrl + 引用写的路径 才是真正的路径<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>([<span class="string">"./a"</span>]);</span><br><span class="line"></span><br><span class="line"><span class="built_in">require</span>([<span class="string">"./jQuery/jq"</span>])</span><br></pre></td></tr></table></figure></p>
+<p>如果觉得每次都写全路径很麻烦, 可以在 config 中通过 paths 配置路径的别名</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>.config(&#123;</span><br><span class="line">  baseUrl: <span class="string">"/demo5/modules"</span>,</span><br><span class="line">  <span class="comment">// 可以用这个 paths 给模块路径设置别名 (ID)</span></span><br><span class="line">  paths: &#123;</span><br><span class="line">    jQ: <span class="string">"./jQuery/jq"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;) </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 这里路径计算规则 = baseUrl + paths 中配置的别名路径</span></span><br><span class="line"><span class="built_in">require</span>([<span class="string">"jQ"</span>])</span><br></pre></td></tr></table></figure>
+<hr>
+<pre><code>// 注意: 第三种方式中,
+// 找文件的规则是: baseUrl + 文件路径 或者 baseUrl + paths
+// 如果引用模块的时候, 路径写法是如下 3 种形式之一, 就不遵守上面的规则了
+// 1. 文件路径 加上了 .js 后缀
+// 2. 文件路径 是以 / 开头的绝对路径
+// 3. 文件路径 以 http:// 或者 https:// 开头的
+</code></pre><hr>
+<h2 id="requirejs-加载第三方模块的做法"><a href="#requirejs-加载第三方模块的做法" class="headerlink" title="requirejs 加载第三方模块的做法"></a>requirejs 加载第三方模块的做法</h2><h3 id="配置-shim-解决第三方依赖项问题"><a href="#配置-shim-解决第三方依赖项问题" class="headerlink" title="配置 shim 解决第三方依赖项问题"></a>配置 shim 解决第三方依赖项问题</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 配置一下 baseUrl 路径</span></span><br><span class="line"><span class="built_in">require</span>.config(&#123;</span><br><span class="line">  baseUrl: <span class="string">"/demo5"</span>,</span><br><span class="line">  paths: &#123;</span><br><span class="line">    <span class="string">"bootstrap"</span>: <span class="string">"./node_modules/bootstrap/dist/js/bootstrap.bundle"</span>,</span><br><span class="line">    <span class="string">"jQuery"</span>: <span class="string">"./node_modules/jquery/dist/jquery"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// requirejs 中可以通过设置 shim, 解决有依赖项的第三方js的加载问题</span></span><br><span class="line">  shim: &#123;</span><br><span class="line">    <span class="comment">// 配置 bootstrap</span></span><br><span class="line">    <span class="string">"bootstrap"</span>: &#123;</span><br><span class="line">      <span class="comment">// 设置依赖项 jQuery</span></span><br><span class="line">      deps: [<span class="string">"jQuery"</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="配置-shim-解决第三方有导出项的问题-配置-exports"><a href="#配置-shim-解决第三方有导出项的问题-配置-exports" class="headerlink" title="配置 shim 解决第三方有导出项的问题, 配置 exports"></a>配置 shim 解决第三方有导出项的问题, 配置 exports</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// requirejs 模块化, 引入有导出项的不支持模块化的第三方模块</span></span><br><span class="line"><span class="built_in">require</span>.config(&#123;</span><br><span class="line">  baseUrl: <span class="string">"/demo5"</span>,</span><br><span class="line">  paths: &#123;</span><br><span class="line">    <span class="string">"animate"</span>: <span class="string">"./modules/fn"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  shim: &#123;</span><br><span class="line">    <span class="string">"animate"</span>: &#123;</span><br><span class="line">      exports: <span class="string">"animate"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">require</span>([<span class="string">"animate"</span>], <span class="function"><span class="keyword">function</span>(<span class="params">animate</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(animate)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="ES6-的模块化"><a href="#ES6-的模块化" class="headerlink" title="ES6 的模块化"></a>ES6 的模块化</h2><h3 id="定义模块"><a href="#定义模块" class="headerlink" title="定义模块"></a>定义模块</h3><ol>
+<li>模块还是一个个的文件</li>
+<li>模块还是有单独的作用域</li>
+</ol>
+<h4 id="模拟一个模块文件"><a href="#模拟一个模块文件" class="headerlink" title="模拟一个模块文件"></a>模拟一个模块文件</h4><p>a.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> msg = <span class="string">"我是模块化中的内容"</span></span><br><span class="line"><span class="built_in">console</span>.log( msg )</span><br></pre></td></tr></table></figure>
+<p>a.js 有导出项的时候<br>导出模块<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> a = &#123; <span class="attr">name</span>: <span class="string">""</span>, <span class="attr">age</span> : <span class="number">18</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 和上面代码等效的代码</span></span><br><span class="line"><span class="keyword">var</span> a = &#123; <span class="attr">name</span>: <span class="string">""</span>, <span class="attr">age</span>: <span class="number">18</span> &#125;</span><br><span class="line"><span class="keyword">var</span> b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123; a, b &#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="引用模块"><a href="#引用模块" class="headerlink" title="引用模块"></a>引用模块</h3><p>import, 引入简单的模块<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">"./a.js"</span></span><br></pre></td></tr></table></figure></p>
+<p>引入有导出项的模块</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 从 a.js 模块引入一个对象, 对象进行结构赋值, 得到 a 和 b</span></span><br><span class="line"><span class="keyword">import</span> &#123; a, b &#125; <span class="keyword">from</span> <span class="string">"./a.js"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; a &#125; <span class="keyword">from</span> <span class="string">"./a.js"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; b &#125; <span class="keyword">from</span> <span class="string">"./a.js"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 这个是导入全部的内容, 存储到自定义的内容名字中</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> 自定义名字 <span class="keyword">from</span> <span class="string">"./a.js"</span></span><br></pre></td></tr></table></figure>
+<h4 id="导入和导出的对应关系"><a href="#导入和导出的对应关系" class="headerlink" title="导入和导出的对应关系"></a>导入和导出的对应关系</h4><ol>
+<li><p>多次导出, 导入多个</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 导出代码</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> a = &#123;&#125;;</span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 上面导出了多个对象属性</span></span><br><span class="line"><span class="comment">// 导入</span></span><br><span class="line"><span class="keyword">import</span> &#123; a, b &#125; <span class="keyword">from</span> <span class="string">"./a.js"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 导入全局作为一个对象, 自定义一个别名</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> 名称 <span class="keyword">from</span> <span class="string">"./a.js"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>单次导出多个, 导入多个</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="keyword">export</span> &#123; a, b &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 导入代码</span></span><br><span class="line"><span class="keyword">import</span> &#123; a, b &#125; <span class="keyword">from</span> <span class="string">"./a.js"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> $ <span class="keyword">from</span> <span class="string">"./jquery.js"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 导入全部作为一个对象</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> 名称 <span class="keyword">from</span> <span class="string">"./a.js"</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li>导出默认项 导入有默认项的内容 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 导出默认项</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 导入任意内容的时候</span></span><br><span class="line"><span class="keyword">import</span> 任意一个名字 <span class="keyword">from</span> <span class="string">"./a.js"</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li>导出的时候设置别名 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意后面的才是别名</span></span><br><span class="line"><span class="keyword">export</span> &#123; a <span class="keyword">as</span> hello, b <span class="keyword">as</span> hi &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; hello, hi &#125; <span class="keyword">from</span> <span class="string">"./a.js"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> xx <span class="keyword">from</span> <span class="string">"./a.js"</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://static.zybuluo.com/JepsonCC/qi8vjk62dk51zqt0a8an8xir/image_1c4uso3kemnn18jg11951ho31g2o9.png" alt="Jepson 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://static.zybuluo.com/JepsonCC/6l63d7x84xii3bwgkpcqk33n/image_1c4usp36f121s29j2r511fd18r5m.png" alt="Jepson 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端模块化/" rel="tag"># 前端模块化</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/06/vue入坑笔记/" rel="next" title="vue入坑笔记(大杂烩)">
+                <i class="fa fa-chevron-left"></i> vue入坑笔记(大杂烩)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://static.zybuluo.com/JepsonCC/focrrncqb7uriops1uguvcfd/image_1c4uu558p1vhh71a1mvqbsp11i2m.png"
+                alt="Jepson" />
+            
+              <p class="site-author-name" itemprop="name">Jepson</p>
+              <p class="site-description motion-element" itemprop="description">爱学习, 爱前端</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/JepsonGithub" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#requirejs-模块化"><span class="nav-number">1.</span> <span class="nav-text">requirejs 模块化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块化的标准"><span class="nav-number">2.</span> <span class="nav-text">模块化的标准</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#requirejs-模块定义和引用"><span class="nav-number">3.</span> <span class="nav-text">requirejs 模块定义和引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导出对象"><span class="nav-number">4.</span> <span class="nav-text">导出对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块的依赖项"><span class="nav-number">5.</span> <span class="nav-text">模块的依赖项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块路径查找问题"><span class="nav-number">6.</span> <span class="nav-text">模块路径查找问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-当前文件路径为参照-相对路径"><span class="nav-number">6.1.</span> <span class="nav-text">1 当前文件路径为参照(相对路径)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-配置data-main"><span class="nav-number">6.2.</span> <span class="nav-text">2 配置data-main</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-配置-config-基础路径"><span class="nav-number">6.3.</span> <span class="nav-text">3 配置 config 基础路径</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#requirejs-加载第三方模块的做法"><span class="nav-number">7.</span> <span class="nav-text">requirejs 加载第三方模块的做法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置-shim-解决第三方依赖项问题"><span class="nav-number">7.1.</span> <span class="nav-text">配置 shim 解决第三方依赖项问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置-shim-解决第三方有导出项的问题-配置-exports"><span class="nav-number">7.2.</span> <span class="nav-text">配置 shim 解决第三方有导出项的问题, 配置 exports</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES6-的模块化"><span class="nav-number">8.</span> <span class="nav-text">ES6 的模块化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义模块"><span class="nav-number">8.1.</span> <span class="nav-text">定义模块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#模拟一个模块文件"><span class="nav-number">8.1.1.</span> <span class="nav-text">模拟一个模块文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用模块"><span class="nav-number">8.2.</span> <span class="nav-text">引用模块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#导入和导出的对应关系"><span class="nav-number">8.2.1.</span> <span class="nav-text">导入和导出的对应关系</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jepson</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+<div><span><a href="http://www.miitbeian.gov.cn">苏ICP备18002051号-1</a></span></div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
