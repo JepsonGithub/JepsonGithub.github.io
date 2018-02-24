@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="webpack," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="webpack的基本使用标签：webpack webpack 是一个模块化打包工具!webpack 会分析模块之间的依赖关系, 并且将这些模块解析生成代表这些模块的静态资源 webpack 安装 全局安装1npm install webpack -g   当做完全局安装后, 在命令行中就可以使用 webpack 了  本地安装(官方推荐)1npm install webpack -D   本地安装">
+<meta name="keywords" content="webpack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack基本使用">
+<meta property="og:url" content="http://yoursite.com/2018/02/24/webpack/index.html">
+<meta property="og:site_name" content="Jepson_鹏鹏的专栏">
+<meta property="og:description" content="webpack的基本使用标签：webpack webpack 是一个模块化打包工具!webpack 会分析模块之间的依赖关系, 并且将这些模块解析生成代表这些模块的静态资源 webpack 安装 全局安装1npm install webpack -g   当做完全局安装后, 在命令行中就可以使用 webpack 了  本地安装(官方推荐)1npm install webpack -D   本地安装">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-24T06:35:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="webpack基本使用">
+<meta name="twitter:description" content="webpack的基本使用标签：webpack webpack 是一个模块化打包工具!webpack 会分析模块之间的依赖关系, 并且将这些模块解析生成代表这些模块的静态资源 webpack 安装 全局安装1npm install webpack -g   当做完全局安装后, 在命令行中就可以使用 webpack 了  本地安装(官方推荐)1npm install webpack -D   本地安装">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/02/24/webpack/"/>
+
+
+
+
+
+  <title>webpack基本使用 | Jepson_鹏鹏的专栏</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jepson_鹏鹏的专栏</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Just do it!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/24/webpack/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jepson">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://static.zybuluo.com/JepsonCC/focrrncqb7uriops1uguvcfd/image_1c4uu558p1vhh71a1mvqbsp11i2m.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jepson_鹏鹏的专栏">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">webpack基本使用</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-24T13:04:00+08:00">
+                2018-02-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/webpack/" itemprop="url" rel="index">
+                    <span itemprop="name">webpack</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="webpack的基本使用"><a href="#webpack的基本使用" class="headerlink" title="webpack的基本使用"></a>webpack的基本使用</h2><p>标签：webpack</p>
+<p>webpack 是一个模块化打包工具!<br>webpack 会分析模块之间的依赖关系, 并且将这些模块解析生成代表这些模块的静态资源</p>
+<h2 id="webpack-安装"><a href="#webpack-安装" class="headerlink" title="webpack 安装"></a>webpack 安装</h2><ol>
+<li>全局安装<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install webpack -g</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>当做完全局安装后, 在命令行中就可以使用 webpack 了</p>
+<ol>
+<li>本地安装(官方推荐)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install webpack -D</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>本地安装, 本地安装后, 在全局不能使用, 但是在npm脚本中是可以使用的, 因为执行 package.json 配置的脚本时, 会自动将 node_modules 临时加到环境变量中去, 这样是可以访问到的 </p>
+<h2 id="webpack-支持的模块化标准"><a href="#webpack-支持的模块化标准" class="headerlink" title="webpack 支持的模块化标准"></a>webpack 支持的模块化标准</h2><ol>
+<li>AMD    (requirejs)</li>
+<li>CommonJS  (node)</li>
+<li>ES6 模块化</li>
+</ol>
+<h2 id="webpack-的-基本语法"><a href="#webpack-的-基本语法" class="headerlink" title="webpack 的 基本语法"></a>webpack 的 基本语法</h2><p><code>webpack main.js build.js</code><br>入口文件 main.js 自动加载依赖<br>输出文件 build.js</p>
+<hr>
+<h2 id="使用-webpack-config-js-进行命令的简化处理"><a href="#使用-webpack-config-js-进行命令的简化处理" class="headerlink" title="使用 webpack.config.js 进行命令的简化处理"></a>使用 webpack.config.js 进行命令的简化处理</h2><p><code>webpack.config.js</code> 默认配置文件，webpack会自动去找这个文件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 默认配置文件，webpack.config.js</span></span><br><span class="line"><span class="comment">// 执行，webpack自动找 webpack.config.js 内容进行相关内容的打包操作</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry: <span class="string">'./main.js'</span>, <span class="comment">// webpack 要打包的源文件 是 main.js</span></span><br><span class="line">    output: &#123;</span><br><span class="line">        filename: <span class="string">'./build.js'</span>  <span class="comment">// 打包后输出的文件名称, ./build.js 表示输出到当前目录下</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>之后直接执行 <code>webpack</code> 就行了, webpack 会自己去找到 webpack.config.js 中的内容进行相应的打包工作</p>
+<hr>
+<h2 id="webpack-打包-css，-style-loader-css-loader"><a href="#webpack-打包-css，-style-loader-css-loader" class="headerlink" title="webpack 打包 css， (style-loader,css-loader)"></a>webpack 打包 css， (style-loader,css-loader)</h2><p>导入 css 和 导入 js 一样<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">"./index.css"</span></span><br></pre></td></tr></table></figure></p>
+<p>但是webpack 默认只支持js模块的解析，所以其他文件类型的模块需要加载依赖, 进行加载解析</p>
+<ul>
+<li>style-loader </li>
+<li>css-loader</li>
+</ul>
+<blockquote>
+<p><code>cnpm init</code> 初始化一个 package.json文件<br><code>cnpm install style-loader css-loader --save-dev</code> 利用package.json 进行管理依赖</p>
+</blockquote>
+<p>下次可以直接利用 <code>cnpm install</code>进行依赖安装</p>
+<p>注意： 在webpack.config.js 中配置下style-loader 和 css-loader，且有顺序要求，必须是先 style-loader 再 css-loader</p>
+<p><code>webpack.config.js</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 默认配置文件，webpack.config.js</span></span><br><span class="line"><span class="comment">// 执行，webpack自动找 webpack.config.js 内容进行相关内容的打包操作</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: path.join(__dirname, <span class="string">"./index.js"</span>),</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.join(__dirname, <span class="string">"./dist"</span>),</span><br><span class="line">    filename: <span class="string">"build.js"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 配置 loader 加载器</span></span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        use: [</span><br><span class="line">          &#123; <span class="attr">loader</span>: <span class="string">'style-loader'</span> &#125;,</span><br><span class="line">          &#123; <span class="attr">loader</span>: <span class="string">'css-loader'</span> &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="webpack-打包-less-sass等同理"><a href="#webpack-打包-less-sass等同理" class="headerlink" title="webpack 打包 less (sass等同理)"></a>webpack 打包 less (sass等同理)</h2><p>步骤：</p>
+<ol>
+<li>安装： <code>cnpm install less-loader less --save-dev</code>， style-loader, css-loader之前已经安装过了，也是必须的</li>
+<li>在<code>webpack.config.js</code> 中添加 less-loader<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: path.join(__dirname, <span class="string">"./index.js"</span>),</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.join(__dirname, <span class="string">"./dist"</span>),</span><br><span class="line">    filename: <span class="string">"build.js"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 配置 loader 加载器</span></span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        use: [</span><br><span class="line">          &#123; <span class="attr">loader</span>: <span class="string">'style-loader'</span> &#125;,</span><br><span class="line">          &#123; <span class="attr">loader</span>: <span class="string">'css-loader'</span> &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.less$/</span>,</span><br><span class="line">        use: [</span><br><span class="line">          &#123; <span class="attr">loader</span>: <span class="string">'style-loader'</span> &#125;,</span><br><span class="line">          &#123; <span class="attr">loader</span>: <span class="string">'css-loader'</span> &#125;,</span><br><span class="line">          &#123; <span class="attr">loader</span>: <span class="string">'less-loader'</span> &#125;   <span class="comment">// 将 less 编译成 css     </span></span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<h2 id="利用-webpack-来打包图片"><a href="#利用-webpack-来打包图片" class="headerlink" title="利用 webpack 来打包图片"></a>利用 webpack 来打包图片</h2><p>webpack 打包将图片转成 base64 会将图片所占大小变大1/3左右, 比如原来图片20kb, 转成base64, 近30kb, 所以小图片转成 base64比较合适, 但是大图片还是直接通过路径引入比较合适<br>步骤：</p>
+<ol>
+<li>安装依赖 <code>url-loader</code>, <code>file-loader</code>, <code>cnpm install url-loader file-loader --save-dev</code></li>
+<li>将<code>url-loader</code>, <code>file-loader</code> 配置到 webpack.config.js 文件中</li>
+</ol>
+<p><code>webpack.config.js</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: path.join(__dirname, <span class="string">"./index.js"</span>),</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.join(__dirname, <span class="string">"./dist"</span>),</span><br><span class="line">    filename: <span class="string">"build.js"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 配置 loader 加载器</span></span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        use: [</span><br><span class="line">          &#123; <span class="attr">loader</span>: <span class="string">'style-loader'</span> &#125;,</span><br><span class="line">          &#123; <span class="attr">loader</span>: <span class="string">'css-loader'</span> &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.(jpg|gif|png|jpeg|bmp|svg)$/</span>,</span><br><span class="line">        use: [</span><br><span class="line">          &#123;</span><br><span class="line">            loader: <span class="string">"url-loader"</span>,</span><br><span class="line">            options: &#123;</span><br><span class="line">              <span class="comment">// 表示大小图片的限制  8kb</span></span><br><span class="line">              limit: <span class="number">8192</span></span><br><span class="line">            &#125;</span><br><span class="line">          &#125;,</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="利用-url-loader-完成字体图标的解析"><a href="#利用-url-loader-完成字体图标的解析" class="headerlink" title="利用 url-loader 完成字体图标的解析"></a>利用 url-loader 完成字体图标的解析</h3><p>在loader中加入 <code>ttf|woff2|woff|eot</code> 文件的解析，url-loader也可以解析 <code>ttf|woff2|woff|eot</code> 等文件，需要其他文件可以自行添加扩展名<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: path.join(__dirname, <span class="string">"./index.js"</span>),</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.join(__dirname, <span class="string">"./dist"</span>),</span><br><span class="line">    filename: <span class="string">"build.js"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 配置 loader 加载器</span></span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      ...</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.(ttf|woff2|woff|eot)$/</span>,</span><br><span class="line">        use: [</span><br><span class="line">          &#123;</span><br><span class="line">            loader: <span class="string">"url-loader"</span></span><br><span class="line">          &#125;,</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="利用-babel-loader等包实现-es6-转-es5"><a href="#利用-babel-loader等包实现-es6-转-es5" class="headerlink" title="利用 babel-loader等包实现 es6 转 es5"></a>利用 babel-loader等包实现 es6 转 es5</h2><p>步骤：</p>
+<ol>
+<li>安装相应依赖包<blockquote>
+<p>cnpm install babel-core –save-dev<br>cnpm install babel-loader –save-dev<br>cnpm install babel-preset-env –save-dev （转码器）</p>
+</blockquote>
+</li>
+<li><p>在目录新建.babelrc 文件</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"presets"</span>: [</span><br><span class="line">    <span class="string">"env"</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在webpack.config.js中配置loader</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: path.join(__dirname, <span class="string">"./index.js"</span>),</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.join(__dirname, <span class="string">"./dist"</span>),</span><br><span class="line">    filename: <span class="string">"build.js"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 配置 loader 加载器</span></span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      ...</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.js$/</span>,</span><br><span class="line">        <span class="comment">// 添加排除项, 不对 node_modules 下的内容做处理</span></span><br><span class="line">        exclude: <span class="regexp">/(node_modules|bower_components)/</span>,</span><br><span class="line">        use: [</span><br><span class="line">          &#123; </span><br><span class="line">            loader: <span class="string">"babel-loader"</span></span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<h2 id="html-webpack-plugin-实现页面刷新和自动打包"><a href="#html-webpack-plugin-实现页面刷新和自动打包" class="headerlink" title="html-webpack-plugin 实现页面刷新和自动打包"></a>html-webpack-plugin 实现页面刷新和自动打包</h2><p><a href="https://www.npmjs.com/package/html-webpack-plugin" target="_blank" rel="noopener">https://www.npmjs.com/package/html-webpack-plugin</a><br>作用: 自动将 src 目录中 index.html 复制到dist目录中, 并且自动为其添加 编译输出文件的 引用</p>
+<ol>
+<li>安装<br> <code>cnpm install html-webpack-plugin -D</code></li>
+<li>配置 webpack.config.js<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">"html-webpack-plugin"</span>)</span><br><span class="line">..</span><br><span class="line">&#123;</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">      title: <span class="string">"index"</span>,  <span class="comment">//"生成的页面标题"</span></span><br><span class="line">      filename: <span class="string">"index.html"</span>, <span class="comment">// 生成的文件名称</span></span><br><span class="line">      template: path.join(__dirname, <span class="string">"index.html"</span>) <span class="comment">// 根据这个模板文件来生成</span></span><br><span class="line">    &#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="webpack-dev-server-热更新"><a href="#webpack-dev-server-热更新" class="headerlink" title="webpack-dev-server 热更新"></a>webpack-dev-server 热更新</h2><p>webpack-dev-server 是跑在内存里面的<br>步骤：</p>
+<ol>
+<li>安装： <code>cnpm install webpack-dev-server --save-dev</code></li>
+<li><code>webpack-dev-server --hot --open --port 3008</code><br>（热编译 –hot, 端口打开在 3008 ）</li>
+<li>这个指令这么长，想缩短，就在package.json配置<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  ...,</span><br><span class="line">  <span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"dev"</span>: <span class="string">"webpack-dev-server --hot --open --port 3008"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"author"</span>: <span class="string">""</span>,</span><br><span class="line">  <span class="string">"license"</span>: <span class="string">"ISC"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>配置完成之后 <code>npm run dev</code> 就可以运行了</p>
+<h3 id="webpack-dev-server-常用功能配置"><a href="#webpack-dev-server-常用功能配置" class="headerlink" title="webpack-dev-server 常用功能配置"></a>webpack-dev-server 常用功能配置</h3><ol>
+<li><p>–port 用来指定服务器端口号<br>webpack-dev-server –port 端口号</p>
+</li>
+<li><p>–contentBase<br>webpack-dev-server –port 9999 –contentBase ./</p>
+</li>
+<li><p>–hot 用来配置 webpack-dev-server 的热更新, 热加载功能, 提高效率</p>
+</li>
+</ol>
+<h3 id="mac-下默认打开的-safari-配置chrome-打开"><a href="#mac-下默认打开的-safari-配置chrome-打开" class="headerlink" title="mac 下默认打开的 safari, 配置chrome 打开"></a>mac 下默认打开的 safari, 配置chrome 打开</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">webpack-dev-server --hot --open &apos;Google Chrome&apos; --port 3008</span><br></pre></td></tr></table></figure>
+<h3 id="配置别名"><a href="#配置别名" class="headerlink" title="配置别名"></a>配置别名</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="comment">// 配置别名</span></span><br><span class="line">  resolve: &#123;</span><br><span class="line">    extensions: [<span class="string">'.js'</span>, <span class="string">'.json'</span>, <span class="string">'.vue'</span>],</span><br><span class="line">    alias: &#123;  </span><br><span class="line">      components: path.resolve(__dirname, <span class="string">'src/components'</span>)  </span><br><span class="line">    &#125;  </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://static.zybuluo.com/JepsonCC/qi8vjk62dk51zqt0a8an8xir/image_1c4uso3kemnn18jg11951ho31g2o9.png" alt="Jepson 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://static.zybuluo.com/JepsonCC/6l63d7x84xii3bwgkpcqk33n/image_1c4usp36f121s29j2r511fd18r5m.png" alt="Jepson 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/webpack/" rel="tag"># webpack</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/19/requirejs前端模块化/" rel="next" title="requirejs前端模块化">
+                <i class="fa fa-chevron-left"></i> requirejs前端模块化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://static.zybuluo.com/JepsonCC/focrrncqb7uriops1uguvcfd/image_1c4uu558p1vhh71a1mvqbsp11i2m.png"
+                alt="Jepson" />
+            
+              <p class="site-author-name" itemprop="name">Jepson</p>
+              <p class="site-description motion-element" itemprop="description">爱学习, 爱前端</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/JepsonGithub" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack的基本使用"><span class="nav-number">1.</span> <span class="nav-text">webpack的基本使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack-安装"><span class="nav-number">2.</span> <span class="nav-text">webpack 安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack-支持的模块化标准"><span class="nav-number">3.</span> <span class="nav-text">webpack 支持的模块化标准</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack-的-基本语法"><span class="nav-number">4.</span> <span class="nav-text">webpack 的 基本语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-webpack-config-js-进行命令的简化处理"><span class="nav-number">5.</span> <span class="nav-text">使用 webpack.config.js 进行命令的简化处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack-打包-css，-style-loader-css-loader"><span class="nav-number">6.</span> <span class="nav-text">webpack 打包 css， (style-loader,css-loader)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack-打包-less-sass等同理"><span class="nav-number">7.</span> <span class="nav-text">webpack 打包 less (sass等同理)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用-webpack-来打包图片"><span class="nav-number">8.</span> <span class="nav-text">利用 webpack 来打包图片</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#利用-url-loader-完成字体图标的解析"><span class="nav-number">8.1.</span> <span class="nav-text">利用 url-loader 完成字体图标的解析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用-babel-loader等包实现-es6-转-es5"><span class="nav-number">9.</span> <span class="nav-text">利用 babel-loader等包实现 es6 转 es5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#html-webpack-plugin-实现页面刷新和自动打包"><span class="nav-number">10.</span> <span class="nav-text">html-webpack-plugin 实现页面刷新和自动打包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack-dev-server-热更新"><span class="nav-number">11.</span> <span class="nav-text">webpack-dev-server 热更新</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#webpack-dev-server-常用功能配置"><span class="nav-number">11.1.</span> <span class="nav-text">webpack-dev-server 常用功能配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mac-下默认打开的-safari-配置chrome-打开"><span class="nav-number">11.2.</span> <span class="nav-text">mac 下默认打开的 safari, 配置chrome 打开</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置别名"><span class="nav-number">11.3.</span> <span class="nav-text">配置别名</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jepson</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+<div><span><a href="http://www.miitbeian.gov.cn">苏ICP备18002051号-1</a></span></div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
